@@ -5,11 +5,15 @@
     <title>Memo List</title>
 </head>
 
+<script src="scripts.js"></script>
+
 
 <body>
     <h1>Memo List</h1>
     <div><label>Get Memo List for:</label> <input type="text" id="authId"/></div>
-    <div><button onclick="getMemoListForUserId()">Get List</button></div>
+    <div><button onclick="getMemoListForUserId()">Get List</button></div><br/>
+
+    <div id="list-container"></div>
 
 </body>
 
@@ -17,6 +21,5 @@
         integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="
         crossorigin="anonymous">
 </script>
-<script src="scripts.js"></script>
 
 </html>
