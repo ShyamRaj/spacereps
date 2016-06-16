@@ -4,7 +4,8 @@ var data_store = require('../data-store/server');
 
 module.exports = function(router) {
     router.get("/memo/list/:name", function (req, res) {
-        data_store.Memo.find({}, function (err, memos) {
+        console.info('finding ' + req.params.name);
+        data_store.Memo.find({authId: req.params.name}, function (err, memos) {
             if (err) {
                 res.json({
                     "error": err
@@ -12,7 +13,7 @@ module.exports = function(router) {
             } else {
                 res.json({
                     "error": false,
-                    "authId": req.params.user,
+                    "authId": req.params.name,
                     "memos": memos
                 });
             }
@@ -20,4 +21,3 @@ module.exports = function(router) {
 
     });
 };
-

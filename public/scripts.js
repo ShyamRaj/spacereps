@@ -5,17 +5,17 @@ var submitTheForm = function(){
     memo = $("#memo").val()
 
     memoData = {
-        userId: userId,
-        memoTitle: memoTitle,
+        authId: userId,
+        title: memoTitle,
         memo: memo,
     }
 
     $.post("/api/memo", memoData, function(response){
-        //success callback here
+        console.info("Success", response);
     }).done(function(){
         //done callback
-    }).fail(function(){
-        //failure callback
+    }).fail(function(error){
+        console.error("Created failed", error)
     });
 }
 
@@ -24,10 +24,10 @@ var getMemoListForUserId = function(){
     userId = $("#authId").val();
 
     $.get("/api/memo/list/" + userId, function(response){
-        //success callback here
+        console.info("Got a list", response);
     }).done(function(){
         //done callback
-    }).fail(function(){
-        //failure callback
+    }).fail(function(error){
+        console.error("List failed", error);
     });
 }
