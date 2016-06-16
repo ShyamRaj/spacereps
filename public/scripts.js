@@ -10,7 +10,6 @@ var submitTheForm = function(){
         memo: memo,
     }
 
-    console.log(dataObject)
     $.post("/api/memo", memoData, function(response){
         //success callback here
     }).done(function(){
