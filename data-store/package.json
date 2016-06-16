@@ -1,0 +1,9 @@
+{
+  "name": "Define_A_Schema",
+  "author": "Runnable",
+  "version": "0.0.1",
+  "dependencies": {
+    "mongoose": "*"
+   },
+  "engine": "node 0.6.x"
+}
