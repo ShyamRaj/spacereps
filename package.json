@@ -1,0 +1,25 @@
+{
+  "name": "spacerep-api",
+  "version": "1.0.0",
+  "description": "Node.js and MongoDb RestAPI",
+  "main": "Server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ShyamRaj/spacereps.git"
+  },
+  "keywords": [
+    "Node.js",
+    "mongoDb",
+    "SpaceRep"
+  ],
+  "author": "Shyam Raj",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.13.3",
+    "express": "^4.13.3",
+    "mongoose": "^4.1.2"
+  }
+}
