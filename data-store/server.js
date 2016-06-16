@@ -4,6 +4,10 @@ var Schema = mongoose.Schema;
 //connect to database
 var db = mongoose.connect('mongodb://localhost:27017/test');
 
+var tokenSchema = new mongoose.Schema({
+  token: {type: String, unique: true}
+});
+
 var memoSchema = new mongoose.Schema({
   authId:  String,
   title:   String,
@@ -27,6 +31,7 @@ var userSchema = new mongoose.Schema({
 var Memo = db.model('memo', memoSchema);
 var Schedule = db.model('schedule', scheduleSchema);
 var User = db.model('user', userSchema);
+var Token = db.model('token', tokenSchema);
 
 //var memo1 = new Memo({
 //  authId: 'test',
@@ -47,5 +52,6 @@ module.exports = {
   db: db,
   Memo: Memo,
   Schedule: Schedule,
-  User: User
+  User: User,
+  Token: Token
 };
