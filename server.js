@@ -2,7 +2,6 @@ var express = require("express");
 var app = express();
 var bodyParser = require("body-parser");
 var memo_create = require('./api/memo_create');
-var data_store = require('./data-store/server');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
