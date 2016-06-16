@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 //connect to database
-var db = mongoose.connect('mongodb://localhost:27017/test');
+var db = mongoose.connect('mongodb://192.168.99.100:27017/test');
 
 var tokenSchema = new mongoose.Schema({
   token: {type: String, unique: true}

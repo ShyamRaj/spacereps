@@ -12,7 +12,7 @@ module.exports = function(router) {
                     "message": "Unable to delete memo"
                 });
             } else {
-                data_store.Schedule.remove({_id: new ObjectId(req.params.id)}, function (err) {
+                data_store.Schedule.remove({memoId: req.params.id}, function (err) {
                     if (err) {
                         console.info("Removing schedule for " + memoId, err);
                         res.json({

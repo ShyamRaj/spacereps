@@ -35,8 +35,8 @@ var getMemoListForUserId = function(){
                                     "<div>" + currentMemo.memo + "</div>" +
                                 "</div>" +
                             "</div>" +
-                            "<div><button onclick=restartMemo(" + currentMemo.memoId  + ")>Restart Memo</button></div>" +
-                            "<div><button onclick=deleteMemo(" + currentMemo.memoId + ")>Delete Memo</button></div><br/><br/>" ;
+                            "<div><button onclick=restartMemo('" + currentMemo._id  + "')>Restart Memo</button></div>" +
+                            "<div><button onclick=deleteMemo('" + currentMemo._id + "')>Delete Memo</button></div><br/><br/>" ;
 
             $("#list-container").append(memoHtml)
         }
