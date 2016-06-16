@@ -1,27 +1,8 @@
-
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
-
-// CONNECTION EVENTS
-// When successfully connected
-mongoose.connection.on('connected', function () {
-  console.log('Mongoose default connection open to ' + dbURI);
-});
-
-// If the connection throws an error
-mongoose.connection.on('error',function (err) {
-  console.log('Mongoose default connection error: ' + err);
-});
-
-// When the connection is disconnected
-mongoose.connection.on('disconnected', function () {
-  console.log('Mongoose default connection disconnected');
-});
-
 //connect to database
-var db = mongoose.connect('mongodb://192.168.99.100:27017/test');
-
+var db = mongoose.connect('mongodb://localhost:27017/test');
 
 var memoSchema = new mongoose.Schema({
   authId:  String,
@@ -37,7 +18,6 @@ var scheduleSchema = new mongoose.Schema({
   iteration: Number
 });
 
-
 var userSchema = new mongoose.Schema({
   authId: String,
   pushId: String,
@@ -49,6 +29,24 @@ var Memo = db.model('memo', memoSchema);
 var Schedule = db.model('schedule', scheduleSchema);
 var User = db.model('user', userSchema);
 
-
+//var memo1 = new Memo({
+//  authId: 'test',
+//  memoId: '-1',
+//  title: 'initial check',
+//  memo: 'fuck it'
+//});
+//
+//memo1.save(function(err){
+//  if(err) {
+//    console.log('CANNOT SAVE MEMO !!!!!!!!!!!!!!');
+//  }
+//});
 
 console.log("Created model");
+
+module.exports = {
+  db: db,
+  Memo: Memo,
+  Schedule: Schedule,
+  User: User
+};
