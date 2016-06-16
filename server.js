@@ -3,18 +3,16 @@ var app = express();
 var path = require('path');
 var bodyParser = require("body-parser");
 var memo_create = require('./api/memo_create');
+var memo_list = require('./api/memo_list');
+
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
 
 app.use('/api/memo', memo_create);
+app.use('/api/memo/list/:name', memo_list);
 
 app.listen(3000);
-//data_store.Memo.find({authId: 'test'}).exec(function(err, memo){
-//    if(err) {
-//        console.log("ERRRROR RETRIEVEING",err);
-//    } else {
-//        console.log("MEMO", memo);
-//    }
-//});
+
 console.log("Listening to PORT 3000");
