@@ -6,7 +6,6 @@ var db = mongoose.connect('mongodb://localhost:27017/test');
 
 var memoSchema = new mongoose.Schema({
   authId:  String,
-  memoId: String,
   title:   String,
   memo: String,
   createDate: { type: Date, default: Date.now }
