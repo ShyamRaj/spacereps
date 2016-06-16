@@ -4,17 +4,30 @@ var submitTheForm = function(){
     memoTitle = $("#title").val()
     memo = $("#memo").val()
 
-    dataObject = {
+    memoData = {
         userId: userId,
         memoTitle: memoTitle,
         memo: memo,
     }
 
     console.log(dataObject)
-    $.post("/api/memo", dataObject, function(response){
+    $.post("/api/memo", memoData, function(response){
         //success callback here
     }).done(function(){
-        console.log(dataObject)
+        //done callback
+    }).fail(function(){
+        //failure callback
+    });
+}
+
+var getMemoListForUserId = function(){
+
+    userId = $("#authId").val();
+
+    $.get("/api/memo/list/" + userId, function(response){
+        //success callback here
+    }).done(function(){
+        //done callback
     }).fail(function(){
         //failure callback
     });
