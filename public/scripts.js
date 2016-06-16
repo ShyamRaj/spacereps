@@ -24,6 +24,8 @@ var getMemoListForUserId = function(){
     $.get("/api/memo/list/" + userId, function(response){
         console.info("Got a list", response);
 
+        $("#list-container").empty();
+
         //got a list, appending html blocks for each memo
         for(var i = 0; i < response.memos.length; i++){
             var currentMemo = response.memos[i];
