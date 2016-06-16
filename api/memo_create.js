@@ -7,7 +7,7 @@ module.exports = function(router) {
         var memo2Bcreated = req.body;
         console.log("memo send", memo2Bcreated);
         var memo = new data_store.Memo(memo2Bcreated);
-        memo.save(function (err) {
+        memo.save(function (err, memo) {
             if (err) {
                 console.log('CANNOT SAVE MEMO !!!!!!!!!!!!!!');
                 res.json({
@@ -15,10 +15,31 @@ module.exports = function(router) {
                     "message": "Memo was not saved"
                 });
             } else {
-                console.log("memo success response", memo2Bcreated);
-                memo2Bcreated.error = false;
-                res.json(memo2Bcreated);
+                console.log("Id of the memo created, Creating schedule for ", memo._id);
+                createFirstSchedule(memo._id, function(err, schedule){
+                    if(err){
+                        res.json({
+                            "error": true,
+                            "message": "Schedule was not saved"
+                        });
+                    } else {
+                        memo.error = false;
+                        res.json(memo);
+                    }
+                });
+
             }
         });
     });
 };
+
+function createFirstSchedule(memoId, callback){
+    var schedule = new data_store.Schedule({
+        memoId: memoId,
+        nextSendTime: Date.now(),
+        iteration: 0
+    });
+    schedule.save(function(err, schedule){
+        callback(err, schedule)
+    })
+}
